@@ -1,0 +1,18 @@
+[Unit]
+Description=Paper NAS IO and model worker
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/papernas
+EnvironmentFile=%h/.config/papernas/server.env
+ExecStart=%h/papernas/backend/.venv/bin/papernas-v2 worker --queues io,model --concurrency 2
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

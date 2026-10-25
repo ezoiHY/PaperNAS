@@ -1,0 +1,1 @@
+Paper NAS native resources.

@@ -1,0 +1,22 @@
+[Unit]
+Description=Paper NAS native client API
+After=network-online.target research-digest-web.service
+Wants=research-digest-web.service
+
+[Service]
+Type=simple
+WorkingDirectory=%h/paper-nas-api/current
+ExecStart=%h/paper-nas-api/venv/bin/python -m paper_nas.app
+Environment=PAPER_NAS_HOST=127.0.0.1
+Environment=PAPER_NAS_PORT=8787
+Environment=PAPER_NAS_UPSTREAM=http://127.0.0.1:8765
+Environment=PYTHONDONTWRITEBYTECODE=1
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=10
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

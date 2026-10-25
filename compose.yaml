@@ -1,0 +1,66 @@
+name: papernas
+
+x-backend: &backend
+  build:
+    context: .
+    dockerfile: deploy/Dockerfile
+    args:
+      INSTALL_LAYOUT: ${PAPERNAS_INSTALL_LAYOUT:-0}
+  image: papernas:local
+  environment: &environment
+    PAPERNAS_V2_DATABASE_URL: postgresql://papernas:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@postgres:5432/papernas
+    PAPERNAS_V2_STATE: /var/lib/papernas
+    PAPERNAS_V2_HOST: 0.0.0.0
+    PAPERNAS_V2_DOCLING: ${PAPERNAS_V2_DOCLING:-0}
+  volumes:
+    - state:/var/lib/papernas
+    - models:/home/papernas/.cache
+  restart: unless-stopped
+  init: true
+  depends_on:
+    postgres:
+      condition: service_healthy
+
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: papernas
+      POSTGRES_DB: papernas
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - postgres:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U papernas -d papernas"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+  api:
+    <<: *backend
+    command: [papernas-v2, api]
+    ports:
+      - "${PAPERNAS_BIND:-127.0.0.1}:${PAPERNAS_PORT:-8788}:8788"
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8788/health', timeout=3)"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+  worker:
+    <<: *backend
+    depends_on:
+      api:
+        condition: service_healthy
+    command: [papernas-v2, worker, --queues, "io,model", --concurrency, "2"]
+  parser:
+    <<: *backend
+    depends_on:
+      api:
+        condition: service_healthy
+    command: [papernas-v2, worker, --queues, parse, --concurrency, "1"]
+
+volumes:
+  postgres:
+  state:
+  models:

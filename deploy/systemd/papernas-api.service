@@ -1,0 +1,17 @@
+[Unit]
+Description=Paper NAS API and browser client
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/papernas
+EnvironmentFile=%h/.config/papernas/server.env
+ExecStart=%h/papernas/backend/.venv/bin/papernas-v2 api
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

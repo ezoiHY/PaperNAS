@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "papernas-v2"
+version = "0.5.0"
+description = "Durable, evidence-oriented research backend for Paper NAS"
+readme = "README.md"
+license = "AGPL-3.0-only"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115,<1", "uvicorn>=0.34,<1", "httpx>=0.28,<1",
+  "psycopg[binary,pool]>=3.2,<4", "procrastinate>=3,<4",
+  "pydantic>=2.10,<3", "python-multipart>=0.0.20,<1",
+  "pymupdf>=1.26,<2", "beautifulsoup4>=4.13,<5", "lxml>=5,<7",
+  "defusedxml>=0.7,<1", "Pillow>=11,<13", "numpy>=2,<3",
+  "pgvector>=0.4,<1",
+]
+
+[project.optional-dependencies]
+layout = ["docling>=2,<3"]
+test = ["pytest>=8,<10", "pytest-asyncio>=1,<2", "ruff>=0.12,<1"]
+
+[project.scripts]
+papernas-v2 = "papernas_v2.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["papernas_v2*"]
+
+[tool.setuptools.package-data]
+papernas_v2 = ["migrations/*.sql", "web/*", "web/src/*.js", "web/licenses/*", "source/*.tar.gz"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
