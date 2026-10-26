@@ -1,6 +1,6 @@
-# Verification for 0.5.0 preparation
+# Verification for 0.5.0
 
-Checked on 2026-10-25 with synthetic local data. This is a local release-preparation record, not a claim of a published or production-certified release.
+Local checks were completed on 2026-10-25 with synthetic data. Publication screenshots were captured on 2026-10-26 from a separate disposable workspace. This records the checks actually performed; it does not imply production certification.
 
 | Area | Result |
 | --- | --- |
@@ -13,7 +13,7 @@ Checked on 2026-10-25 with synthetic local data. This is a local release-prepara
 | Frozen legacy adapter | 32 tests passed, 5 optional external-engine tests skipped |
 | Deployment files | Compose and CI YAML parsed; Docker was unavailable, so containers were not built or run |
 | Release artifacts | Source archive and wheel file lists checked; installed wheel served the browser, licenses, and corresponding source; Mac ZIP version and bundled notices checked |
-| GitHub Actions | Workflow prepared with pinned action revisions; no remote run yet |
+| GitHub Actions | Workflow prepared with pinned action revisions; remote execution pending publication |
 
 ## Browser walkthrough
 
@@ -29,8 +29,10 @@ The browser was connected to an isolated API instance with synthetic papers and 
 
 Screenshots contain synthetic demonstration content only: [desktop research](images/web-research.jpg), [mobile research](images/web-mobile.jpg), and [mobile dark library](images/web-mobile-dark.jpg).
 
+The [publication gallery](SCREENSHOTS.md) adds ten screenshots of the browser library in both themes, browser PDF and figure views, research evidence and plans, completed tasks, the native Mac library and reader, and the mobile library. These are captures of the running application with synthetic source PDFs. The gallery's figure region was corrected through the visible controls and processed successfully by the worker.
+
 ## Limits of this check
 
 Paid model calls, live scholarly discovery, optional Docling model downloads, fresh-machine installation, Docker runtime behavior, Apple notarization, and GitHub runner execution were not tested in this preparation. Backend provider tests use synthetic local responses. The Mac build emitted existing Command Line Tools framework-search warnings; compilation and signature verification succeeded. Python tests reported dependency deprecation warnings.
 
-Production services, private research materials, saved connection settings, and the installed Mac application were left unchanged. The public source excludes private state and previous personal deployment notes. License files currently use AGPL-3.0-only; confirm the intended project license before public publication.
+Production services, private research materials, saved connection settings, and the installed Mac application were left unchanged. The public source excludes private state and previous personal deployment notes. Source files use AGPL-3.0-only with preserved third-party notices.

@@ -1,12 +1,54 @@
 # Paper NAS
 
-A self-hosted research workspace with a browser client and a native Mac app. Keep papers, figures, notes, source evidence, research judgments, and background jobs on your own server.
+**Your papers, evidence, and research decisions — on your own server.**
 
-**Version 0.5.0 · early release · single-user workspace · AGPL-3.0**
+[![CI](https://github.com/ezoiHY/PaperNAS/actions/workflows/ci.yml/badge.svg)](https://github.com/ezoiHY/PaperNAS/actions/workflows/ci.yml)
+[![License: AGPL v3](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)](LICENSE)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-3776AB.svg)](backend/pyproject.toml)
+[![macOS 14+](https://img.shields.io/badge/macOS-14%2B-333333.svg)](macOS/README.md)
 
-[Quick start](#quick-start) · [Deployment](docs/DEPLOYMENT.md) · [Architecture](docs/ARCHITECTURE.md) · [Contributing](CONTRIBUTING.md) · [中文](docs/README.zh-CN.md)
+Paper NAS is a self-hosted research workspace for a NAS, home server, or local machine. A browser client and a native Mac app share one library: read the original material, collect exact source evidence, and connect it to questions, judgments, and verification plans.
 
-## What it does
+**Version 0.5.0 · early release · single-user workspace**
+
+[Quick start](#quick-start) · [Screenshots](docs/SCREENSHOTS.md) · [Deployment](docs/DEPLOYMENT.md) · [Architecture](docs/ARCHITECTURE.md) · [中文介绍](docs/README.zh-CN.md)
+
+![Paper NAS browser library in light appearance](docs/images/library-light.jpg)
+
+*The running application, with synthetic demonstration papers. All screenshots use sample content; titles and diagrams do not represent published research or experimental results.*
+
+## From reading to a research decision
+
+1. **Collect.** Import a PDF, paper URL, DOI, or arXiv identifier. Search arXiv and Crossref for candidates, then choose what belongs in your library.
+2. **Read.** Open the original PDF, inspect extracted text and figures, and save notes against a specific PDF version and page.
+3. **Connect.** Link papers to a research question. Save exact passages or figures as evidence while keeping their original source anchors.
+4. **Decide and revisit.** Record a judgment, state a verification plan, add results from work performed outside the app, and update your understanding with history preserved.
+
+Model-assisted analysis and comparison are optional. Reading, notes, and research records work without a model provider. When enabled, the server sends bounded excerpts to your configured OpenAI-compatible provider and validates cited quotations before publishing an analysis.
+
+## A workspace on the web and Mac
+
+### Native PDF reading
+
+The Mac app uses SwiftUI and PDFKit, with page-linked notes, text selections, region anchors, and local KaTeX for mathematical text. Each device connects to the same server and stores its own device token in Keychain.
+
+![Native Mac PDF reader with a page-linked note and a conceptual workflow diagram](docs/images/macos-reader.jpg)
+
+### Source material, evidence, and background work
+
+| Read the original PDF | Inspect and correct figures |
+| --- | --- |
+| ![Browser PDF reader](docs/images/pdf-reader.jpg) | ![Figure preview with source page and correction controls](docs/images/figures.jpg) |
+| Open a paper and move between its PDF, source text, figures, notes, and analysis. | Keep figures connected to their source page; correct a region and download the original asset. |
+
+| Build a source-backed research record | Keep work running on the server |
+| --- | --- |
+| ![Research question with saved source evidence](docs/images/research-evidence.jpg) | ![Completed import and figure-repair tasks](docs/images/tasks.jpg) |
+| Evidence, judgments, plans, results, and understanding stay together around a question. | Inspect, pause, resume, cancel, and retry durable operations after closing either client. |
+
+See the **[full screenshot gallery](docs/SCREENSHOTS.md)** for dark appearance, the Mac library, verification plans, and the mobile layout.
+
+## What is included
 
 - Import PDFs, paper URLs, DOIs, and arXiv identifiers. Discover candidates through bounded arXiv and Crossref searches.
 - Read original PDFs, extracted text, figures, and saved analyses. Organize papers into groups and keep notes tied to a PDF version and page.
@@ -15,26 +57,7 @@ A self-hosted research workspace with a browser client and a native Mac app. Kee
 - Inspect, pause, resume, cancel, and retry durable background operations. Work continues after the browser or Mac app closes.
 - Export PDFs, original figures, analysis Markdown, and research records in Markdown or JSON.
 
-The browser client follows a quiet library layout: a narrow sidebar, readable paper rows, restrained blue selection, and a focused reading area. It has no CDN, external fonts, analytics, build framework, or JavaScript runtime dependency on the server. The Mac client uses SwiftUI, PDFKit, and local KaTeX for math.
-
-![Browser research workspace with synthetic demonstration data](docs/images/web-research.jpg)
-
-The screenshot uses synthetic demonstration content, not real papers or research findings.
-
-## Repository map
-
-| Directory | Purpose |
-| --- | --- |
-| `backend/` | Python/FastAPI API, PostgreSQL schema, durable workers, document processing, and tests |
-| `frontend/` | Working browser client, plain ES modules and CSS, API client tests |
-| `macOS/` | Native SwiftUI client, PDFKit reader, resources, and Swift tests |
-| `deploy/` | Container and systemd examples; private configuration is supplied separately |
-| `scripts/` | Mac build, source packaging, and public-source audit tools |
-| `docs/` | Setup, architecture, API conventions, release process, and limitations |
-| `design-system/` | Native and web UI design rules |
-| `legacy/` | Frozen v1 API adapter and migration-era scripts; not the current server |
-
-The current backend is independent of the earlier `research-digest` processing engine. A fresh installation does not need that project. The old engine and its web UI are not included or required.
+The browser has light and dark appearance, a responsive mobile layout, and keyboard-accessible controls. It uses plain ES modules and CSS, with no CDN, external fonts, analytics, or frontend build step. Node is only needed for frontend checks.
 
 ## Quick start
 
@@ -42,9 +65,9 @@ Requirements: Python 3.12+, PostgreSQL 18 (the tested major version), and a mode
 
 ### Local development on macOS
 
-From the repository root:
-
 ```sh
+git clone https://github.com/ezoiHY/PaperNAS.git
+cd PaperNAS
 python3.12 -m venv backend/.venv
 backend/.venv/bin/python -m pip install -e './backend[test]'
 backend/.venv/bin/python backend/scripts/bootstrap_postgres.py
@@ -93,6 +116,35 @@ docker compose exec api papernas-v2 show-access-key
 
 The default mapping is `127.0.0.1:8788`; PostgreSQL has no host port mapping. Configure HTTPS or a trusted private network for remote access. See the [deployment guide](docs/DEPLOYMENT.md). The Compose template requires Docker Compose v2 and is separate from the verified bare-metal path.
 
+## How it fits together
+
+```mermaid
+flowchart LR
+    Browser[Browser] --> API[FastAPI v2]
+    Mac[Native Mac app] --> API
+    API --> DB[(PostgreSQL)]
+    API --> Files[(PDFs and source assets)]
+    DB <--> Workers[Durable workers]
+    Workers <--> Files
+    Workers --> Sources[Scholarly sources]
+    Workers --> Models[Optional model provider]
+```
+
+PostgreSQL stores the library, research records, revisions, and task queue. Content-addressed files retain source documents and derived assets. API and worker processes can run separately; business changes and task enqueueing share a database transaction. See [architecture and consistency](docs/ARCHITECTURE.md) for the detailed boundaries.
+
+| Directory | Purpose |
+| --- | --- |
+| `backend/` | FastAPI API, PostgreSQL schema, durable workers, document processing, and tests |
+| `frontend/` | Browser client, plain ES modules and CSS, API client tests |
+| `macOS/` | Native SwiftUI client, PDFKit reader, resources, and Swift tests |
+| `deploy/` | Container and systemd examples |
+| `scripts/` | Mac build, source packaging, and public-source audit tools |
+| `docs/` | Setup, architecture, API conventions, release process, and limitations |
+| `design-system/` | Native and web UI design rules |
+| `legacy/` | Frozen v1 adapter and migration-era scripts; not the current server |
+
+The current backend is independent of the earlier `research-digest` engine. A fresh installation does not need that project.
+
 ## Check the code
 
 ```sh
@@ -115,6 +167,15 @@ Backend tests create and drop randomly named databases on a disposable PostgreSQ
 - No hosted sync service, Windows/Linux native clients, signed Mac releases, or automatic updates.
 
 See [feature boundaries](docs/FEATURES.md) for client differences and [verification results](docs/VERIFICATION.md) for tested paths.
+
+## Contributing and support
+
+Bug reports and focused improvements are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md), include the relevant client/server version, and use synthetic examples when reporting a problem.
+
+- [Report a bug](https://github.com/ezoiHY/PaperNAS/issues/new?template=bug_report.md)
+- [Discuss an idea or request a feature](https://github.com/ezoiHY/PaperNAS/issues)
+- [Report a security concern](SECURITY.md)
+- [Read the changelog](CHANGELOG.md) and [release process](docs/RELEASING.md)
 
 ## License and research data
 
