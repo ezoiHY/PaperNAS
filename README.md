@@ -1,21 +1,21 @@
 # Paper NAS
 
-**Your papers, evidence, and research decisions — on your own server.**
+**A native Mac workspace for papers, evidence, and research decisions. Backed by your own server.**
 
 [![CI](https://github.com/ezoiHY/PaperNAS/actions/workflows/ci.yml/badge.svg)](https://github.com/ezoiHY/PaperNAS/actions/workflows/ci.yml)
 [![License: AGPL v3](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)](LICENSE)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-3776AB.svg)](backend/pyproject.toml)
 [![macOS 14+](https://img.shields.io/badge/macOS-14%2B-333333.svg)](macOS/README.md)
 
-Paper NAS is a self-hosted research workspace for a NAS, home server, or local machine. A browser client and a native Mac app share one library: read the original material, collect exact source evidence, and connect it to questions, judgments, and verification plans.
+Paper NAS brings a SwiftUI Mac app, a browser client, and a self-hosted research library together. Read original PDFs, move through carefully typeset analyses, follow citations to source passages, and connect evidence to research questions. Your NAS, home server, or local machine keeps the library and background work in one place.
 
 **Version 0.5.0 · early release · single-user workspace**
 
-[Quick start](#quick-start) · [Screenshots](docs/SCREENSHOTS.md) · [Deployment](docs/DEPLOYMENT.md) · [Architecture](docs/ARCHITECTURE.md) · [中文介绍](docs/README.zh-CN.md)
+[Mac app tour](docs/MACOS-GALLERY.md) · [Quick start](#quick-start) · [Web gallery](docs/SCREENSHOTS.md) · [Deployment](docs/DEPLOYMENT.md) · [中文介绍](docs/README.zh-CN.md)
 
-![Paper NAS browser library in light appearance](docs/images/library-light.jpg)
+![Paper NAS native Mac reading view with chapter navigation, typeset text, and source citations](docs/images/macos-analysis.jpg)
 
-*The running application, with synthetic demonstration papers. All screenshots use sample content; titles and diagrams do not represent published research or experimental results.*
+*The running Mac app: chapter navigation, typeset reading, and source citations. All screenshots use synthetic demonstration content; analyses and diagrams do not represent published research or experimental results. Mac interface labels are currently primarily Chinese.*
 
 ## From reading to a research decision
 
@@ -26,27 +26,34 @@ Paper NAS is a self-hosted research workspace for a NAS, home server, or local m
 
 Model-assisted analysis and comparison are optional. Reading, notes, and research records work without a model provider. When enabled, the server sends bounded excerpts to your configured OpenAI-compatible provider and validates cited quotations before publishing an analysis.
 
-## A workspace on the web and Mac
+## Built for reading on Mac
 
-### Native PDF reading
+SwiftUI navigation, native sheets, and a quiet reading layout keep the paper at the center. Switch between list and illustrated library views, read PDFs with PDFKit, and follow an analysis back to its original evidence. Mathematical text renders locally with KaTeX.
 
-The Mac app uses SwiftUI and PDFKit, with page-linked notes, text selections, region anchors, and local KaTeX for mathematical text. Each device connects to the same server and stores its own device token in Keychain.
-
-![Native Mac PDF reader with a page-linked note and a conceptual workflow diagram](docs/images/macos-reader.jpg)
-
-### Source material, evidence, and background work
-
-| Read the original PDF | Inspect and correct figures |
+| Browse a visual library | Read the PDF beside your notes |
 | --- | --- |
-| ![Browser PDF reader](docs/images/pdf-reader.jpg) | ![Figure preview with source page and correction controls](docs/images/figures.jpg) |
-| Open a paper and move between its PDF, source text, figures, notes, and analysis. | Keep figures connected to their source page; correct a region and download the original asset. |
+| [![Native Mac library in grid view](docs/images/macos-library-grid.jpg)](docs/images/macos-library-grid.jpg) | [![Native Mac PDF reader with page-linked notes](docs/images/macos-pdf-notes-light.jpg)](docs/images/macos-pdf-notes-light.jpg) |
+| Paper and figure previews, groups, search, and a separate candidate queue. | Original pages, native text selections, region anchors, and notes tied to a PDF version. |
 
-| Build a source-backed research record | Keep work running on the server |
+| Settle into focused reading | Inspect the original figures |
 | --- | --- |
-| ![Research question with saved source evidence](docs/images/research-evidence.jpg) | ![Completed import and figure-repair tasks](docs/images/tasks.jpg) |
-| Evidence, judgments, plans, results, and understanding stay together around a question. | Inspect, pause, resume, cancel, and retry durable operations after closing either client. |
+| [![Focused native reading with an inline equation and citation buttons](docs/images/macos-focus-reading.jpg)](docs/images/macos-focus-reading.jpg) | [![Native figure reader with source page and evidence actions](docs/images/macos-figures.jpg)](docs/images/macos-figures.jpg) |
+| Hide the contents sidebar while keeping chapter navigation and source citations within reach. | Enlarge a figure, open its source page, correct its region, or save it as research evidence. |
 
-See the **[full screenshot gallery](docs/SCREENSHOTS.md)** for dark appearance, the Mac library, verification plans, and the mobile layout.
+| Bring evidence into a question | Turn a judgment into a plan |
+| --- | --- |
+| [![Native research workspace with linked papers and evidence](docs/images/macos-research-evidence.jpg)](docs/images/macos-research-evidence.jpg) | [![Native research judgment and verification plan](docs/images/macos-research-plans.jpg)](docs/images/macos-research-plans.jpg) |
+| Keep papers, exact quotations, figures, and your own observations together. | Record assumptions, methods, baselines, and success criteria; revisit them as evidence changes. |
+
+**[Explore the full Mac app tour →](docs/MACOS-GALLERY.md)** — 17 screenshots covering the library, candidates, reading, source text, PDFs, figure correction, evidence capture, research records, comparison, tasks, and dark appearance.
+
+## The same workspace in your browser
+
+The browser connects to the same library, research records, and durable tasks. Use it from another computer or a phone while the server continues importing and processing papers. Each client receives its own device token; the Mac app stores its token in Keychain.
+
+![Paper NAS browser library in light appearance](docs/images/library-light.jpg)
+
+See the **[web gallery](docs/SCREENSHOTS.md)** for PDF reading, figures, research records, dark appearance, and the mobile layout.
 
 ## What is included
 

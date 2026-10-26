@@ -1,10 +1,12 @@
-# Paper NAS in use
+# Paper NAS on the web
+
+For the native app, see the **[Mac app tour](MACOS-GALLERY.md)**: 17 screenshots of library views, typeset reading, PDF notes, figure correction, evidence capture, research records, comparison, tasks, and dark appearance.
 
 These screenshots were captured from the running browser and native Mac clients on 2026-10-26. They use an isolated local workspace containing six synthetic papers, three candidates, and an example research question. Paper titles, text, notes, and research records are demonstration content. The diagram is a conceptual illustration, not a validated scientific result.
 
 No personal library, model credentials, or production deployment details appear in these images. The task history shows real local imports, parsing, and a figure-region repair. No paid model calls were used to prepare this gallery.
 
-[Project overview](../README.md) · [中文介绍](README.zh-CN.md) · [Feature boundaries](FEATURES.md)
+[Project overview](../README.md) · [Mac app tour](MACOS-GALLERY.md) · [中文介绍](README.zh-CN.md) · [Feature boundaries](FEATURES.md)
 
 ## Browser library
 
@@ -50,7 +52,7 @@ The server continues import and processing work when the client closes. The scre
 
 ## Native Mac library
 
-The SwiftUI client connects to the same API and shows the same papers and groups.
+The SwiftUI client connects to the same API and shows the same papers and groups. These two original Mac captures are also included in the expanded [Mac app tour](MACOS-GALLERY.md).
 
 ![Native Mac library](images/macos-library.jpg)
 

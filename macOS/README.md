@@ -2,6 +2,10 @@
 
 SwiftUI navigation and forms, PDFKit for original documents, local KaTeX/WebKit for math, and Keychain for device credentials. Requires macOS 14+, Swift 6, and Xcode Command Line Tools. UI labels are currently primarily Chinese; paper content retains its source language. The new browser client uses English labels.
 
+![Native Mac reading view with chapter navigation and source citations](../docs/images/macos-analysis.jpg)
+
+**[Take the Mac app tour](../docs/MACOS-GALLERY.md)** for 17 screenshots of the library, focused reading, PDF notes, source figures, evidence capture, research plans, comparison, tasks, and dark appearance. All pictured papers and research records are synthetic demonstration content.
+
 From the repository root:
 
 ```sh

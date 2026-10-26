@@ -31,6 +31,21 @@ Screenshots contain synthetic demonstration content only: [desktop research](ima
 
 The [publication gallery](SCREENSHOTS.md) adds ten screenshots of the browser library in both themes, browser PDF and figure views, research evidence and plans, completed tasks, the native Mac library and reader, and the mobile library. These are captures of the running application with synthetic source PDFs. The gallery's figure region was corrected through the visible controls and processed successfully by the worker.
 
+## Native Mac showcase walkthrough
+
+On 2026-10-26, a separate preview identity of the existing 0.5.0 build was connected to another disposable local workspace. The [Mac app tour](MACOS-GALLERY.md) adds fifteen captures and reuses the two original dark-appearance Mac images. Visible controls were used to inspect:
+
+- Library list and grid views, groups, and the candidate queue.
+- Analysis chapter navigation, focus mode, inline equation rendering, citations, and highlighted source text.
+- Original PDFs beside page-linked notes, extracted figures, and the native region-correction sheet.
+- The evidence form and a successful save of a figure to a research question.
+- Linked papers and evidence, the current judgment, verification plan, result record, and understanding snapshot.
+- Cross-paper comparison with source quotations, and completed import, analysis, comparison, and figure-repair operations.
+
+Six synthetic PDFs were imported and parsed by the actual workers. Three analyses and one comparison used hand-authored responses from a deterministic local provider, processed through the real model gateway, response-schema validation, and exact-source quotation checks. All four operations completed successfully. The sample formula and research records contain no measured experimental results. No paid or remote model calls were used, and the preview identity did not use the installed app's Keychain connection.
+
+This update changes documentation and screenshots only; it does not change application behavior. Screenshot provenance is described in the [capture notes](MACOS-GALLERY.md#about-these-captures).
+
 ## Limits of this check
 
 Paid model calls, live scholarly discovery, optional Docling model downloads, end-user fresh-machine installation, the application's Docker Compose runtime, and Apple notarization were not tested in this preparation. GitHub's backend job used a disposable PostgreSQL 18 service container. Backend provider tests use synthetic local responses. The local Mac build emitted existing Command Line Tools framework-search warnings; compilation and signature verification succeeded. Python tests reported dependency deprecation warnings.

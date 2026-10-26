@@ -1,19 +1,19 @@
 # Paper NAS
 
-**把论文、原文证据和研究判断放在自己的服务器上。**
+**用原生 Mac App 阅读论文、整理证据，把研究工作留在自己的服务器上。**
 
 [![CI](https://github.com/ezoiHY/PaperNAS/actions/workflows/ci.yml/badge.svg)](https://github.com/ezoiHY/PaperNAS/actions/workflows/ci.yml)
 [![License: AGPL v3](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)](../LICENSE)
 
-Paper NAS 是一个可以部署在 NAS、家庭服务器或本机上的科研工作台，包含网页客户端和原生 Mac App。论文、PDF、图表、笔记、原文证据、研究判断与后台任务统一保存在服务器。
+Paper NAS 是一个以原生 Mac 阅读体验为核心的科研工作台，同时提供网页客户端。用 SwiftUI/PDFKit 阅读原始论文，在精读正文中查看公式、追溯引用，再把证据整理到研究问题中。论文库、研究记录与后台任务统一保存在自己的 NAS、家庭服务器或本机上。
 
 当前版本为 **0.5.0 · 早期版本 · AGPL-3.0-only**。一台服务器对应一个个人工作空间，多台设备共享；尚未提供多用户权限隔离。
 
-[安装步骤](../README.md#quick-start) · [完整截图](SCREENSHOTS.md) · [部署说明](DEPLOYMENT.md) · [English](../README.md)
+[Mac 完整导览](MACOS-GALLERY.md) · [安装步骤](../README.md#quick-start) · [网页图集](SCREENSHOTS.md) · [部署说明](DEPLOYMENT.md) · [English](../README.md)
 
-![网页文库](images/library-light.jpg)
+![原生 Mac 精读页面：章节目录、正文排版与原文引用](images/macos-analysis.jpg)
 
-截图来自实际运行的应用，全部使用虚构示例论文与研究记录。图中的示意图不代表经过验证的科研结果。
+截图来自实际运行的应用，全部使用虚构示例论文与研究记录；分析文字和示意图不代表真实科研结论。Mac 界面目前主要使用中文。
 
 ## 从阅读到可追溯的研究判断
 
@@ -24,15 +24,30 @@ Paper NAS 是一个可以部署在 NAS、家庭服务器或本机上的科研工
 
 模型辅助分析和跨论文比较是可选功能。普通阅读、笔记和研究记录不需要模型服务；开启后，由服务器向你配置的 OpenAI 兼容服务发送有界原文片段。
 
-## 网页与原生 Mac 客户端
+## 原生 Mac App，逐个界面看
 
-![Mac 原生 PDF 阅读器与页码笔记](images/macos-reader.jpg)
-
-| 原始图表与区域修正 | 研究问题与原文证据 |
+| 图文书架 | PDF 与页码笔记 |
 | --- | --- |
-| ![图表视图](images/figures.jpg) | ![研究证据](images/research-evidence.jpg) |
+| [![原生图文书架](images/macos-library-grid.jpg)](images/macos-library-grid.jpg) | [![PDF 阅读与侧栏笔记](images/macos-pdf-notes-light.jpg)](images/macos-pdf-notes-light.jpg) |
+| 通过论文预览、图表缩略图、分组和搜索浏览文库。 | 阅读原始 PDF，保留文字选择、区域锚点与具体页码。 |
 
-更多文库、深色模式、移动端、验证计划和任务页截图见 [完整图集](SCREENSHOTS.md)。
+| 专注精读与公式 | 原始图表 |
+| --- | --- |
+| [![原生专注精读与行内公式](images/macos-focus-reading.jpg)](images/macos-focus-reading.jpg) | [![Mac 原始图表阅读器](images/macos-figures.jpg)](images/macos-figures.jpg) |
+| 收起目录，保留章节切换与原文引用；公式在本地渲染。 | 放大图表、查看来源页、修正提取区域，或保存为证据。 |
+
+| 研究问题与证据 | 判断与验证计划 |
+| --- | --- |
+| [![Mac 研究证据](images/macos-research-evidence.jpg)](images/macos-research-evidence.jpg) | [![Mac 判断和验证计划](images/macos-research-plans.jpg)](images/macos-research-plans.jpg) |
+| 围绕一个问题关联论文、准确引文、图表与自己的观察。 | 写清前提、方法、基线和成功标准，再根据新证据修订判断。 |
+
+**[查看完整 Mac 导览 →](MACOS-GALLERY.md)**：17 张实拍界面，继续展示列表文库、待选池、原文定位、图表区域修正、证据保存、结果与理解快照、跨论文比较、后台任务，以及深色模式。
+
+## 在浏览器中继续使用
+
+![网页文库](images/library-light.jpg)
+
+网页与 Mac 共享同一个后端和研究工作空间；关闭客户端后，后台任务仍由服务器继续处理。[网页图集](SCREENSHOTS.md) 展示桌面、移动端和深色模式。
 
 ## 包含什么
 
