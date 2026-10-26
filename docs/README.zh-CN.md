@@ -26,22 +26,46 @@ Paper NAS 是一个以原生 Mac 阅读体验为核心的科研工作台，同�
 
 ## 原生 Mac App，逐个界面看
 
-| 图文书架 | PDF 与页码笔记 |
-| --- | --- |
-| [![原生图文书架](images/macos-library-grid.jpg)](images/macos-library-grid.jpg) | [![PDF 阅读与侧栏笔记](images/macos-pdf-notes-light.jpg)](images/macos-pdf-notes-light.jpg) |
-| 通过论文预览、图表缩略图、分组和搜索浏览文库。 | 阅读原始 PDF，保留文字选择、区域锚点与具体页码。 |
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top">
+      <p><strong>图文书架</strong></p>
+      <a href="images/macos-library-grid.jpg"><img src="images/macos-library-grid.jpg" alt="原生图文书架" width="100%"></a>
+      <p>通过论文预览、分组与搜索浏览文库。</p>
+    </td>
+    <td width="50%" valign="top">
+      <p><strong>PDF 与笔记</strong></p>
+      <a href="images/macos-pdf-notes-light.jpg"><img src="images/macos-pdf-notes-light.jpg" alt="PDF 阅读与侧栏笔记" width="100%"></a>
+      <p>阅读原始页面，让笔记对应具体来源。</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <p><strong>专注精读</strong></p>
+      <a href="images/macos-focus-reading.jpg"><img src="images/macos-focus-reading.jpg" alt="原生专注精读与行内公式" width="100%"></a>
+      <p>专注于正文，随时查看公式与原文引用。</p>
+    </td>
+    <td width="50%" valign="top">
+      <p><strong>原始图表</strong></p>
+      <a href="images/macos-figures.jpg"><img src="images/macos-figures.jpg" alt="Mac 原始图表阅读器" width="100%"></a>
+      <p>放大图表、修正区域，并返回来源页。</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <p><strong>研究证据</strong></p>
+      <a href="images/macos-research-evidence.jpg"><img src="images/macos-research-evidence.jpg" alt="Mac 研究证据" width="100%"></a>
+      <p>围绕一个问题关联论文、引文与图表。</p>
+    </td>
+    <td width="50%" valign="top">
+      <p><strong>判断与计划</strong></p>
+      <a href="images/macos-research-plans.jpg"><img src="images/macos-research-plans.jpg" alt="Mac 判断和验证计划" width="100%"></a>
+      <p>记录判断依据，明确接下来的验证方法。</p>
+    </td>
+  </tr>
+</table>
 
-| 专注精读与公式 | 原始图表 |
-| --- | --- |
-| [![原生专注精读与行内公式](images/macos-focus-reading.jpg)](images/macos-focus-reading.jpg) | [![Mac 原始图表阅读器](images/macos-figures.jpg)](images/macos-figures.jpg) |
-| 收起目录，保留章节切换与原文引用；公式在本地渲染。 | 放大图表、查看来源页、修正提取区域，或保存为证据。 |
-
-| 研究问题与证据 | 判断与验证计划 |
-| --- | --- |
-| [![Mac 研究证据](images/macos-research-evidence.jpg)](images/macos-research-evidence.jpg) | [![Mac 判断和验证计划](images/macos-research-plans.jpg)](images/macos-research-plans.jpg) |
-| 围绕一个问题关联论文、准确引文、图表与自己的观察。 | 写清前提、方法、基线和成功标准，再根据新证据修订判断。 |
-
-**[查看完整 Mac 导览 →](MACOS-GALLERY.md)**：17 张实拍界面，继续展示列表文库、待选池、原文定位、图表区域修正、证据保存、结果与理解快照、跨论文比较、后台任务，以及深色模式。
+**[查看完整 Mac 导览](MACOS-GALLERY.md)**：17 张完整截图，继续展示证据保存、跨论文比较、后台任务与深色模式。
 
 ## 在浏览器中继续使用
 

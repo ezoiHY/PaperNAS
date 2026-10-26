@@ -30,22 +30,46 @@ Model-assisted analysis and comparison are optional. Reading, notes, and researc
 
 SwiftUI navigation, native sheets, and a quiet reading layout keep the paper at the center. Switch between list and illustrated library views, read PDFs with PDFKit, and follow an analysis back to its original evidence. Mathematical text renders locally with KaTeX.
 
-| Browse a visual library | Read the PDF beside your notes |
-| --- | --- |
-| [![Native Mac library in grid view](docs/images/macos-library-grid.jpg)](docs/images/macos-library-grid.jpg) | [![Native Mac PDF reader with page-linked notes](docs/images/macos-pdf-notes-light.jpg)](docs/images/macos-pdf-notes-light.jpg) |
-| Paper and figure previews, groups, search, and a separate candidate queue. | Original pages, native text selections, region anchors, and notes tied to a PDF version. |
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top">
+      <p><strong>Visual library</strong></p>
+      <a href="docs/images/macos-library-grid.jpg"><img src="docs/images/macos-library-grid.jpg" alt="Native Mac library in grid view" width="100%"></a>
+      <p>Browse paper previews, groups, and your reading queue.</p>
+    </td>
+    <td width="50%" valign="top">
+      <p><strong>PDFs and notes</strong></p>
+      <a href="docs/images/macos-pdf-notes-light.jpg"><img src="docs/images/macos-pdf-notes-light.jpg" alt="Native Mac PDF reader with page-linked notes" width="100%"></a>
+      <p>Read original pages with notes anchored to their source.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <p><strong>Focused reading</strong></p>
+      <a href="docs/images/macos-focus-reading.jpg"><img src="docs/images/macos-focus-reading.jpg" alt="Focused native reading with an inline equation and citation buttons" width="100%"></a>
+      <p>Read typeset analysis with equations and source citations.</p>
+    </td>
+    <td width="50%" valign="top">
+      <p><strong>Original figures</strong></p>
+      <a href="docs/images/macos-figures.jpg"><img src="docs/images/macos-figures.jpg" alt="Native figure reader with source page and evidence actions" width="100%"></a>
+      <p>Inspect figures, correct regions, and return to the source.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <p><strong>Research evidence</strong></p>
+      <a href="docs/images/macos-research-evidence.jpg"><img src="docs/images/macos-research-evidence.jpg" alt="Native research workspace with linked papers and evidence" width="100%"></a>
+      <p>Connect papers, exact quotations, and figures to a question.</p>
+    </td>
+    <td width="50%" valign="top">
+      <p><strong>Judgments and plans</strong></p>
+      <a href="docs/images/macos-research-plans.jpg"><img src="docs/images/macos-research-plans.jpg" alt="Native research judgment and verification plan" width="100%"></a>
+      <p>Record your reasoning and define how you will check it.</p>
+    </td>
+  </tr>
+</table>
 
-| Settle into focused reading | Inspect the original figures |
-| --- | --- |
-| [![Focused native reading with an inline equation and citation buttons](docs/images/macos-focus-reading.jpg)](docs/images/macos-focus-reading.jpg) | [![Native figure reader with source page and evidence actions](docs/images/macos-figures.jpg)](docs/images/macos-figures.jpg) |
-| Hide the contents sidebar while keeping chapter navigation and source citations within reach. | Enlarge a figure, open its source page, correct its region, or save it as research evidence. |
-
-| Bring evidence into a question | Turn a judgment into a plan |
-| --- | --- |
-| [![Native research workspace with linked papers and evidence](docs/images/macos-research-evidence.jpg)](docs/images/macos-research-evidence.jpg) | [![Native research judgment and verification plan](docs/images/macos-research-plans.jpg)](docs/images/macos-research-plans.jpg) |
-| Keep papers, exact quotations, figures, and your own observations together. | Record assumptions, methods, baselines, and success criteria; revisit them as evidence changes. |
-
-**[Explore the full Mac app tour →](docs/MACOS-GALLERY.md)** — 17 screenshots covering the library, candidates, reading, source text, PDFs, figure correction, evidence capture, research records, comparison, tasks, and dark appearance.
+**[Explore the full Mac app tour](docs/MACOS-GALLERY.md)** · 17 full-size screenshots, including evidence capture, comparison, tasks, and dark appearance.
 
 ## The same workspace in your browser
 
