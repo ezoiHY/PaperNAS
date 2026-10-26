@@ -13,7 +13,7 @@ Local checks were completed on 2026-10-25 with synthetic data. Publication scree
 | Frozen legacy adapter | 32 tests passed, 5 optional external-engine tests skipped |
 | Deployment files | Compose and CI YAML parsed; Docker was unavailable, so containers were not built or run |
 | Release artifacts | Source archive and wheel file lists checked; installed wheel served the browser, licenses, and corresponding source; Mac ZIP version and bundled notices checked |
-| GitHub Actions | Workflow prepared with pinned action revisions; remote execution pending publication |
+| GitHub Actions | [Publication run](https://github.com/ezoiHY/PaperNAS/actions/runs/40265929464) passed on 2026-10-26: backend tests/lint/source audit/packaging on Ubuntu with PostgreSQL 18, frontend tests/syntax checks on Node 22, and Swift tests plus Mac release build on macOS 15 |
 
 ## Browser walkthrough
 
@@ -33,6 +33,6 @@ The [publication gallery](SCREENSHOTS.md) adds ten screenshots of the browser li
 
 ## Limits of this check
 
-Paid model calls, live scholarly discovery, optional Docling model downloads, fresh-machine installation, Docker runtime behavior, Apple notarization, and GitHub runner execution were not tested in this preparation. Backend provider tests use synthetic local responses. The Mac build emitted existing Command Line Tools framework-search warnings; compilation and signature verification succeeded. Python tests reported dependency deprecation warnings.
+Paid model calls, live scholarly discovery, optional Docling model downloads, end-user fresh-machine installation, the application's Docker Compose runtime, and Apple notarization were not tested in this preparation. GitHub's backend job used a disposable PostgreSQL 18 service container. Backend provider tests use synthetic local responses. The local Mac build emitted existing Command Line Tools framework-search warnings; compilation and signature verification succeeded. Python tests reported dependency deprecation warnings.
 
 Production services, private research materials, saved connection settings, and the installed Mac application were left unchanged. The public source excludes private state and previous personal deployment notes. Source files use AGPL-3.0-only with preserved third-party notices.
